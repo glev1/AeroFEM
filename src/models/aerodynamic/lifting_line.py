@@ -1,11 +1,14 @@
 import numpy as np
+from src.utils.aero_utils import Wing
+
+
 
 class LLFourier():
     def __init__(self):
         return
 
 
-class LLGalerkin():
+class LLGalerkin(Wing):
     def __init__(self):
         self.nodes = []
         self.elements = []
