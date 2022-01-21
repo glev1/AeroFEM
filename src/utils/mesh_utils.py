@@ -1,6 +1,8 @@
 import numpy as np
 
-def r_disc(N, b, r):
+def r_disc(N: int,
+           b: float,
+           r: float) -> np.array:
     """Discretization with parameter r
 
     Splits span domain [-b/2, b/2] into N points using a
