@@ -37,8 +37,12 @@ def r_disc(N: int,
 
 class Node():
     def __init__(self, label, coords, chords, cl_alpha, alpha_l0, theta):
-        self.label, self.coords, self.chords, self.cl_alpha, self.alpha_l0,
-        self.theta = label, coords, chords, cl_alpha, alpha_l0, thetas
+        self.label = label
+        self.coords = coords
+        self.chords = chords
+        self.cl_alpha = cl_alpha
+        self.alpha_l0 = alpha_l0
+        self.theta = theta
 
 class LL2():
     def __init__(self, nodes, ngauss = 4):
@@ -170,9 +174,9 @@ class Mesh():
             if (elem_type == 'LL2'):
                 self.Nnodes = Nelem+1
                 self.coords = np.zeros((self.Nnodes, 2))
-                self.coords[:,0] = disc(self.Nnodes,self.span,r)
+                self.coords[:,0] = r_disc(self.Nnodes,self.span,r)
                 #self.coords[:,1] = np.zeros(self.Nnodes)
-                self.coords[:,1] = 0.0*problem.coords[:,0]**2
+                self.coords[:,1] = 0.0*self.coords[:,0]**2
                 self.create_nodes()
 
                 for k in range(Nelem):

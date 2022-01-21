@@ -1,15 +1,26 @@
 import numpy as np
 from src.utils.aero_utils import Wing
+from src.utils.mesh_utils import Mesh, Node
 
 class LLFourier():
     def __init__(self):
         return
 
 
-class LLGalerkin(Wing):
+class LLGalerkin(Wing, Mesh):
     def __init__(self):
         self.nodes = []
         self.elements = []
+
+    def create_nodes(self):
+        for k in range(self.Nnodes):
+            chord = np.interp(self.coords[k], self.stations, self.chords)
+            cl_alpha = np.interp(self.coords[k], self.stations, self.cl_alpha)
+            alpha_l0 = np.interp(self.coords[k], self.stations, self.alpha_l0)
+            theta = np.interp(self.coords[k], self.stations, self.theta)
+            new_node = Node(k, self.coords[k], chord, cl_alpha, alpha_l0, theta)
+            self.nodes.append(new_node)
+        return
 
     def assembly(self):
         NGDL = 1

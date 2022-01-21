@@ -1,11 +1,12 @@
 import numpy as np
 from src.models.aerodynamic.lifting_line import LLGalerkin
 
+
 span = 12
 
-vec_Nelem = np.array([70])
-vec_r = np.array([0.1])
-N = vec_Nelem[0]+1
+Nelem = 70
+r = 0.1
+N = Nelem+1
 stations = -(span/2)*np.cos(np.linspace(0,np.pi,N))
 chords = 1 * np.ones(np.size(stations))
 area = span*chords[0]
@@ -27,3 +28,5 @@ elem_type = 'LL2'
 problem = LLGalerkin()
 
 problem.create_wing_from_sections(stations, chords, cl_alpha, alpha_l0, theta)
+
+problem.create_mesh(mesh_type, Nelem, elem_type, r)
