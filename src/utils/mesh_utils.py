@@ -48,6 +48,7 @@ class LL2():
         self.h = self.nodes[1].coords[0] - self.nodes[0].coords[0]
         self.ye = (self.nodes[1].coords[0] + self.nodes[0].coords[0])/2
 
+
     def shape_functions(self, qsi):
         N1 = lambda qsi: (1.0 - qsi) / 2.0
         N2 = lambda qsi: (1.0 + qsi) / 2.0
@@ -156,3 +157,24 @@ class LL2():
 
         values = np.array([fe[0],fe[1]])
         return i, values
+
+class Mesh():
+    def __init__(self):
+        return
+
+    def create_mesh(self, mesh_type, Nelem, elem_type,r):
+        self.elem_type = elem_type
+        self.mesh_type = mesh_type
+        self.Nelem = Nelem
+        if (mesh_type == 'r'):
+            if (elem_type == 'LL2'):
+                self.Nnodes = Nelem+1
+                self.coords = np.zeros((self.Nnodes, 2))
+                self.coords[:,0] = disc(self.Nnodes,self.span,r)
+                #self.coords[:,1] = np.zeros(self.Nnodes)
+                self.coords[:,1] = 0.0*problem.coords[:,0]**2
+                self.create_nodes()
+
+                for k in range(Nelem):
+                    new_element = LL2((self.nodes[k], self.nodes[k+1]))
+                    self.elements.append(new_element)
