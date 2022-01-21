@@ -10,7 +10,7 @@ class LLGalerkin():
         self.nodes = []
         self.elements = []
 
-    def solve(self):
+    def assembly(self):
         NGDL = 1
 
         K1 = np.zeros((self.Nnodes*NGDL, self.Nnodes*NGDL))
@@ -50,21 +50,24 @@ class LLGalerkin():
 
         self.f = f
         self.K = K
+        return K, f, K1, K2
 
-        K = np.linalg.inv(K)
-        self.circ = np.matmul(K, f)
+    def solve(self):
+        invK = np.linalg.inv(self.K)
+        self.circ = np.matmul(invK, self.f)
+        return self.circ
 
-
+    def compute_coeff(self)
         gamma_int = 0.0
         for element in self.elements:
             gamma_int += (self.circ[element.nodes[1].label]+ self.circ[element.nodes[0].label]) * (element.h/2.0)
 
         CL = 2.0 * gamma_int/(self.area*self.Uinf)
         alpha_i = np.matmul(K2,self.circ)
-        Cdi = (2/(self.Uinf*self.area))*np.matmul(self.circ,alpha_i)
+        CDi = (2/(self.Uinf*self.area))*np.matmul(self.circ,alpha_i)
 
 
         print('CL_Galerkin:', CL)
-        print('Cdi_Galerkin:', Cdi)
+        print('CDi_Galerkin:', CDi)
 
-        return self.circ, CL, K1, K2, f
+        return CL, CDi
