@@ -4,16 +4,17 @@
 
 # Project Structure
 ```
-├── src
-│   ├── conf           # stores project configurations is json format.
-│   ├── main           # main logic of models.
-│   ├── resources      # storage of resources.
-│   └── utils          # helper functions.
-├── tests              # contains projects testing suite.
-├── logs.log           # log files storage.
-├── requirements.txt   # Python dependencies.
+├── aerofem
+│   ├── main                        # Main logic for problem solving
+│   │   └── example.py              # Example of a aerodynamic problem: planar static wing solved with Galerkin method. 
+│   ├── models                      # Maing logic of models
+│   │   └── aerodynamic            
+│   │       └── lifting_line.py     
+│   └── utils                       # Helper functions    
+│       ├── aero_utils.py           
+│       └── mesh_utils.py
 ├── README.md
-├── Makefile           
+└── setup.py
 ```
 
 # Usage
