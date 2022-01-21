@@ -1,4 +1,5 @@
 import numpy as np
+import cmath
 
 def r_disc(N: int,
            b: float,
@@ -71,7 +72,7 @@ class LL2():
 
         Ke = np.zeros((2,2))
         coords = np.array([[self.nodes[0].coords[0]],[self.nodes[1].coords[0]]])
-        chords = np.array([[self.nodes[0].chord[0]],[self.nodes[1].chord[0]]])
+        chords = np.array([[self.nodes[0].chords[0]],[self.nodes[1].chords[0]]])
         cl_alphas = np.array([[self.nodes[0].cl_alpha[0]],[self.nodes[1].cl_alpha[0]]])
 
 

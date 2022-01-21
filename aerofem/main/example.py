@@ -1,5 +1,5 @@
 import numpy as np
-from src.models.aerodynamic.lifting_line import LLGalerkin
+from aerofem.models.aerodynamic.lifting_line import LLGalerkin
 
 
 span = 12
@@ -30,3 +30,11 @@ problem = LLGalerkin()
 problem.create_wing_from_sections(stations, chords, cl_alpha, alpha_l0, theta)
 
 problem.create_mesh(mesh_type, Nelem, elem_type, r)
+
+problem.set_flycond(70, 5)
+
+problem.assembly()
+
+problem.solve()
+
+problem.compute_coeff()
