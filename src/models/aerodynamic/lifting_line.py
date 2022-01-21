@@ -1,8 +1,6 @@
 import numpy as np
 from src.utils.aero_utils import Wing
 
-
-
 class LLFourier():
     def __init__(self):
         return
