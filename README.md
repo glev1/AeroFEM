@@ -3,7 +3,7 @@
 *Insert project description*
 
 # Project Structure
-
+```
 ├── src
 │   ├── conf           # stores project configurations is json format.
 │   ├── main           # main logic of models.
@@ -14,6 +14,7 @@
 ├── requirements.txt   # Python dependencies.
 ├── README.md
 ├── Makefile           
+```
 
 # Usage
 
