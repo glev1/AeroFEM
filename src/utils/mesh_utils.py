@@ -54,7 +54,7 @@ class LL2():
         Nmat = np.array([[N1(qsi), N2(qsi)]])
         return Nmat
 
-    def K1_matrix(self, Uinf):
+    def compute_matrix_M(self, Uinf):
         n1 = self.nodes[0].label
         n2 = self.nodes[1].label
 
@@ -83,8 +83,8 @@ class LL2():
 
         return i, j, values
 
-    #### matriz K
-    def K2_matrix(self, element, Uinf):
+
+    def compute_matrix_K(self, element, Uinf):
         n1i = self.nodes[0].label
         n2i = self.nodes[1].label
         n1j = element.nodes[0].label
@@ -135,7 +135,7 @@ class LL2():
 
         return i, j, values
 
-    def f_vector(self, AoA, Uinf):
+    def compute_vector_f(self, AoA, Uinf):
 
         n1 = self.nodes[0].label
         n2 = self.nodes[1].label
