@@ -1,6 +1,7 @@
 import numpy as np
 import cmath
 from typing import List, Union
+from __future__ import annotations
 
 
 def r_disc(N: int,
@@ -84,7 +85,7 @@ class LL2():
         qsi of the bi-unitary domain.
 
         Args:
-            qsi(float): Parametrised position
+            qsi (float): Parametrised position
 
         Returns:
             array: Shape function values
@@ -94,7 +95,19 @@ class LL2():
         Nmat = np.array([[N1(qsi), N2(qsi)]])
         return Nmat
 
-    def compute_matrix_M(self, Uinf):
+    def compute_matrix_M(self,
+                         Uinf: float):
+
+        """Computes local matrix M component of aerodynamic 
+        steady problem.
+
+        Args:
+            Uinf (float): Free-stream velocity [meters/second]
+
+        Returns:
+            tuple: i and j element coordinates in global matrix
+            and local M matrix 
+        """
         n1 = self.nodes[0].label
         n2 = self.nodes[1].label
 
@@ -124,7 +137,20 @@ class LL2():
         return i, j, values
 
 
-    def compute_matrix_K(self, element, Uinf):
+    def compute_matrix_K(self,
+                        element: LL2,
+                        Uinf: float):
+        """Computes local matrix K component of aerodynamic 
+        steady problem.
+
+        Args:
+            element (LL2): Element that influences via downwash
+            Uinf (float): Free-stream velocity [meters/second]
+
+        Returns:
+            tuple: i and j element coordinates in global matrix
+            and local K matrix 
+        """
         n1i = self.nodes[0].label
         n2i = self.nodes[1].label
         n1j = element.nodes[0].label
@@ -175,7 +201,16 @@ class LL2():
 
         return i, j, values
 
-    def compute_vector_f(self, AoA, Uinf):
+    def compute_vector_f(self, AoA):
+
+        """Computes local vector
+
+        Args:
+            AoA (float): Angle of atack [rad]
+
+        Returns:
+            tuple: i coordinate in global vector and local f vector
+        """
 
         n1 = self.nodes[0].label
         n2 = self.nodes[1].label
