@@ -233,10 +233,29 @@ class LL2():
         return i, values
 
 class Mesh():
+
+    """
+    Creates Mesh object
+    """
+
     def __init__(self):
         return
 
-    def create_mesh(self, mesh_type, Nelem, elem_type,r):
+    def create_mesh(self,
+                    mesh_type: str,
+                    Nelem: int,
+                    elem_type: str,
+                    r:float = 0):
+                    
+        """Create wing mesh
+
+        Args:
+            mesh_type (str): Type of mesh discretization 
+            ['uniform' or 'r']
+            Nelem (int): Number of elements
+            elem_type (str): Type of element ['LL2', 'LL3'] 
+            r (float): Ratio between tip and root elements length
+        """
         self.elem_type = elem_type
         self.mesh_type = mesh_type
         self.Nelem = Nelem
