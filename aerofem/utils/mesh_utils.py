@@ -37,7 +37,14 @@ def r_disc(N: int,
     return y
 
 class Node():
-    def __init__(self, label, coords, chords, cl_alpha, alpha_l0, theta):
+
+    """
+    Creates a Node object.
+    """
+    def __init__(self,
+                label: int,
+                coords: float,
+                chords: float, cl_alpha, alpha_l0, theta):
         self.label = label
         self.coords = coords
         self.chords = chords
