@@ -78,7 +78,6 @@ class LL2():
 
     def shape_functions(self,
                         qsi: float) -> np.array:
-
         """Linear shape functions
 
         Compute shape functions N1 and N2 in some position 
