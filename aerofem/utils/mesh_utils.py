@@ -75,7 +75,20 @@ class LL2():
         self.ye = (self.nodes[1].coords[0] + self.nodes[0].coords[0])/2
 
 
-    def shape_functions(self, qsi):
+    def shape_functions(self,
+                        qsi: float) -> np.array:
+
+        """Linear shape functions
+
+        Compute shape functions N1 and N2 in some position 
+        qsi of the bi-unitary domain.
+
+        Args:
+            qsi(float): Parametrised position
+
+        Returns:
+            array: Shape function values
+        """
         N1 = lambda qsi: (1.0 - qsi) / 2.0
         N2 = lambda qsi: (1.0 + qsi) / 2.0
         Nmat = np.array([[N1(qsi), N2(qsi)]])
