@@ -22,7 +22,6 @@ if __name__=="__main__":
 
     theta = 0.0 * np.ones(np.size(stations))
 
-
     mesh_type = 'r'
     elem_type = 'LL2'
 
@@ -35,8 +34,6 @@ if __name__=="__main__":
     problem.set_flycond(70, 5)
 
     problem.assembly()
-
-    print(problem.coords[1])
 
     problem.solve()
 

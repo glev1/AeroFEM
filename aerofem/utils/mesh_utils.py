@@ -1,5 +1,7 @@
 import numpy as np
 import cmath
+from typing import List, Union
+
 
 def r_disc(N: int,
            b: float,
@@ -41,10 +43,15 @@ class Node():
     """
     Creates a Node object.
     """
+
     def __init__(self,
                 label: int,
-                coords: float,
-                chords: float, cl_alpha, alpha_l0, theta):
+                coords: List[float],
+                chords: List[float],
+                cl_alpha: List[float],
+                alpha_l0: List[float],
+                theta: List[float]):
+        # Initialize variables        
         self.label = label
         self.coords = coords
         self.chords = chords
@@ -53,7 +60,14 @@ class Node():
         self.theta = theta
 
 class LL2():
-    def __init__(self, nodes, ngauss = 4):
+
+    """
+    Creates a LL2 element.
+    """
+
+    def __init__(self,
+                nodes: List[Union[int, List[float]]],
+                ngauss: int = 4):
         self.nodes, self.ngauss = nodes, ngauss
 
         [self.qsi, self.w] = np.polynomial.legendre.leggauss(self.ngauss)
