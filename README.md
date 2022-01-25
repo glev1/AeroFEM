@@ -19,7 +19,12 @@
 
 # Usage
 
-*Insert examples of usage*
+Simple example:
+
+```bash
+python3 -m aerofem.main.example
+```
+
 
 # References
 
