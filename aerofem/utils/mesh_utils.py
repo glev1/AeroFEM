@@ -1,7 +1,7 @@
+from __future__ import annotations
 import numpy as np
 import cmath
 from typing import List, Union
-from __future__ import annotations
 
 
 def r_disc(N: int,
