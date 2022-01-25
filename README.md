@@ -19,7 +19,15 @@
 
 # Usage
 
-Simple example:
+- Clone repository
+```bash
+git clone git@github.com:glev1/aerofem.git
+```
+- Create virtualenv
+```bash
+python3 -m venv ~/.aerofem && source ~/.aerofem/bin/activate
+```
+Run simple example:
 
 ```bash
 python3 -m aerofem.main.example
