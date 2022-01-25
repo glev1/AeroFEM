@@ -1,0 +1,6 @@
+{
+    "mesh_type": "r",
+    "Nelem": 70,
+    "r": 0.1,
+    "elem_type": "LL2"
+}
