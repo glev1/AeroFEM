@@ -5,16 +5,27 @@
 # Project Structure
 ```
 ├── aerofem
-│   ├── main                        # Main logic for problem solving
-│   │   └── example.py              # Example of a aerodynamic problem: planar static wing solved with Galerkin method. 
-│   ├── models                      # Maing logic of models
-│   │   └── aerodynamic            
-│   │       └── lifting_line.py     
-│   └── utils                       # Helper functions    
-│       ├── aero_utils.py           
-│       └── mesh_utils.py
+│   ├── conf                       # Model and parameter configuration
+│   │   ├── example_mesh.json
+│   │   └── example_wing.json
+│   ├── __init__.py
+│   ├── models                     # Main code of models
+│   │   ├── aerodynamic
+│   │   │   ├── __init__.py
+│   │   │   └── lifting_line.py
+│   │   └── __init__.py
+│   └── utils                      # Helper functions
+│       ├── aero_utils.py
+│       ├── data_utils.py
+│       ├── __init__.py
+│       └── mesh_utils.py
+├── Makefile                   
+├── projects                       # Saved projects
+│   └── example.pkl
 ├── README.md
-└── setup.py
+├── requirements.txt               # Dependencies
+└── tutorials                      # Usage examples
+    └── example.py
 ```
 
 # Usage
