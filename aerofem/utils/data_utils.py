@@ -1,5 +1,6 @@
 import os
 import json
+import pickle
 
 
 def set_main_path() -> str:
@@ -26,3 +27,11 @@ def get_param(config_name: str, value_name: str):
     with open(file, encoding='utf-8') as f:
         data = json.load(f)
     return data[value_name]
+
+def save_object(obj, filename):
+
+    main_path = set_main_path()
+    file = os.path.join(main_path, f"projects/{filename}.pkl")
+
+    with open(file, 'wb') as outp:  # Overwrites any existing file.
+        pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
