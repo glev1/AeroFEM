@@ -36,7 +36,7 @@ make install
 
 Run simple example:
 ```bash
-python3 -m aerofem.main.example
+python3 -m tutorials.example
 ```
 
 
