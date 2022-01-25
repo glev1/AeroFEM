@@ -23,12 +23,18 @@
 ```bash
 git clone git@github.com:glev1/aerofem.git
 ```
+
 - Create virtualenv
 ```bash
 python3 -m venv ~/.aerofem && source ~/.aerofem/bin/activate
 ```
-Run simple example:
 
+- Install dependencies 
+```bash
+make install 
+```
+
+Run simple example:
 ```bash
 python3 -m aerofem.main.example
 ```
