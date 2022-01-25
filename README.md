@@ -21,7 +21,7 @@
 
 - Clone repository
 ```bash
-git clone git@github.com:glev1/aerofem.git
+git@github.com:glev1/AeroFEM.git
 ```
 
 - Create virtualenv
