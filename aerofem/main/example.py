@@ -2,7 +2,7 @@ if __name__=="__main__":
 
     import pickle
     from aerofem.models.aerodynamic.lifting_line import LLGalerkin
-    from aerofem.utils.data_utils import get_param, save_object
+    from aerofem.utils.data_utils import get_param, save_object, load_object
 
     problem = LLGalerkin()
 
@@ -31,3 +31,5 @@ if __name__=="__main__":
     problem.compute_coeff()
 
     save_object(problem, 'example')
+
+    problem_loaded = load_object('projects','example')

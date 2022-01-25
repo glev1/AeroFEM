@@ -35,3 +35,13 @@ def save_object(obj, filename):
 
     with open(file, 'wb') as outp:  # Overwrites any existing file.
         pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
+
+def load_object(path, filename):
+
+    main_path = set_main_path()
+    file = os.path.join(main_path, f"{path}/{filename}.pkl")
+
+    with open(file, 'rb') as inp:  # Overwrites any existing file.
+        obj = pickle.load(inp)
+
+    return obj
