@@ -28,7 +28,14 @@ def get_param(config_name: str, value_name: str):
         data = json.load(f)
     return data[value_name]
 
-def save_object(obj, filename):
+def save_object(obj: any,
+                filename):
+    """Save an Object inside a file
+
+    Args:
+        obj (any): Object to be saved
+        filename (str): Filename without extension
+    """
 
     main_path = set_main_path()
     file = os.path.join(main_path, f"projects/{filename}.pkl")

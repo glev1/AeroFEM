@@ -1,33 +1,23 @@
 if __name__=="__main__":
 
-    import numpy as np
     from aerofem.models.aerodynamic.lifting_line import LLGalerkin
-
-    span = 12
-
-    Nelem = 70
-    r = 0.1
-    N = Nelem+1
-    stations = -(span/2)*np.cos(np.linspace(0,np.pi,N))
-    chords = 1 * np.ones(np.size(stations))
-    area = span*chords[0]
-    cl_alpha = (2*np.pi)* np.ones(np.size(stations))
-    S = span*(chords[0] + chords[-1])
-    rho = 1.225
-
-    #FLAP
-    alpha_l0_sf = 0*np.pi/180
-    alpha_l0_cf = 0*np.pi/180
-    alpha_l0 = alpha_l0_sf * ((stations < -span/4)*1 + (stations > span/4)*1) + alpha_l0_cf * ((stations > -span/4)*1 + (stations < span/4)*1) - alpha_l0_cf
-
-    theta = 0.0 * np.ones(np.size(stations))
-
-    mesh_type = 'r'
-    elem_type = 'LL2'
+    from aerofem.utils.data_utils import get_param, save_object, load_object
 
     problem = LLGalerkin()
 
-    problem.create_wing_from_sections(stations, chords, cl_alpha, alpha_l0, theta)
+    span = get_param('example_wing', 'span')
+    stations = get_param('example_wing', 'stations')
+    chords = get_param('example_wing', 'chords')
+    cl_alphas = get_param('example_wing', 'cl_alphas')
+    alpha_l0s = get_param('example_wing', 'alpha_l0s')
+    thetas = get_param('example_wing', 'thetas')
+
+    problem.create_wing_from_sections(stations, chords, cl_alphas, alpha_l0s, thetas)
+
+    mesh_type = get_param('example_mesh', 'mesh_type')
+    Nelem = get_param('example_mesh', 'Nelem')
+    r = get_param('example_mesh', 'r')
+    elem_type = get_param('example_mesh', 'elem_type')
 
     problem.create_mesh(mesh_type, Nelem, elem_type, r)
 
@@ -38,3 +28,9 @@ if __name__=="__main__":
     problem.solve()
 
     problem.compute_coeff()
+
+    save_object(problem, 'example')
+
+    problem.save('example')
+
+    problem_loaded = load_object('projects','example')
