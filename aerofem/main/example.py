@@ -2,9 +2,10 @@ if __name__=="__main__":
 
     import numpy as np
     from aerofem.models.aerodynamic.lifting_line import LLGalerkin
+    from aerofem.utils.data_utils import get_param
 
-    span = 12
-
+    span = get_param('example', 'span')
+    
     Nelem = 70
     r = 0.1
     N = Nelem+1
