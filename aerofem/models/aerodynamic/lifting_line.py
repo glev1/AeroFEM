@@ -88,5 +88,10 @@ class LLGalerkin(Wing, Mesh, LL2):
 
     def save(self,
             filename: str):
+        """Save LLGalerkin object inside a pickle file
+
+        Args:
+            filename (str): Filename without extension
+        """
         save_object(self, filename)
 

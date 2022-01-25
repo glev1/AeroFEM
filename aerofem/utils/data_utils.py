@@ -30,7 +30,7 @@ def get_param(config_name: str, value_name: str):
 
 def save_object(obj: any,
                 filename):
-    """Save an Object inside a file
+    """Saves an Object inside a pickle file
 
     Args:
         obj (any): Object to be saved
@@ -44,6 +44,15 @@ def save_object(obj: any,
         pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
 def load_object(path, filename):
+
+    """Loads an Object from a pickle file
+
+    Args:
+        path (str): Relative path to file (from /aeroFEM)
+        filename (str): Filename without extension
+    Returns:
+        (any): Object loaded
+    """
 
     main_path = set_main_path()
     file = os.path.join(main_path, f"{path}/{filename}.pkl")
