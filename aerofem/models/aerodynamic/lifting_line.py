@@ -35,7 +35,7 @@ class LLGalerkin(Wing, Mesh, LL2):
 
         for element1 in self.elements:
             [i1, j1, K1_elem] = element1.compute_matrix_M(self.Uinf)
-            [i3, f_elem] = element1.compute_vector_f(self.AoA, self.Uinf)
+            [i3, f_elem] = element1.compute_vector_f(self.AoA)
 
             for k in range(len(i1)):
                 K1[i1[k], j1[k]] += K1_elem[k]
