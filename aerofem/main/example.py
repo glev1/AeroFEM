@@ -32,4 +32,6 @@ if __name__=="__main__":
 
     save_object(problem, 'example')
 
+    problem.save('example')
+
     problem_loaded = load_object('projects','example')

@@ -1,5 +1,6 @@
 import numpy as np
 from aerofem.utils.aero_utils import Wing
+from aerofem.utils.data_utils import save_object
 from aerofem.utils.mesh_utils import Mesh, Node, LL2
 
 class LLFourier():
@@ -84,3 +85,8 @@ class LLGalerkin(Wing, Mesh, LL2):
         print('CDi_Galerkin:', self.CDi)
 
         return
+
+    def save(self,
+            filename: str):
+        save_object(self, filename)
+
